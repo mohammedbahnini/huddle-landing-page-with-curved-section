@@ -1,0 +1,516 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+// resets 
+* , *::after , *::before {
+    box-sizing: border-box;
+    margin : 0 ; 
+    padding : 0; 
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    min-height : 100vh;
+}
+
+main {
+    display : block;
+}
+h1 , 
+h2 , 
+h3 , 
+h4 , 
+h5 , 
+h6{
+    font-family: 'Poppins', sans-serif;
+}
+
+a{
+    text-decoration: none;
+    color : black ;
+    font-family : inherit;
+}
+
+ul {
+    list-style-type: none;
+}
+img{
+    display : block;
+    width: 100%;
+}
+
+// useful rules
+// display felx
+.d-flex{
+    display : flex;
+    &.center-content {
+        align-items : center; 
+        justify-content : center ; 
+    }
+}
+.ai-center {
+    align-items : center; 
+}
+.ai-start{
+    align-items : start ; 
+}
+.ai-end {
+    align-items : end;
+}
+.ai-baseline {
+    align-items : baseline ;
+}
+.jc-center{
+    justify-content : center ; 
+}
+.jc-start{
+    justify-content : start ; 
+}
+.jc-end{
+    justify-content : end; 
+}
+.jc-space-between{
+    justify-content : space-between;
+}
+
+// fonts
+.ft-regular{
+    font-weight : 400;
+}
+.ft-semi-bold{
+    font-weight : 600;
+}
+.ft-bold{
+    font-weight : 700;
+}
+.ft-bolder{
+    font-weight : 900;
+}
+
+// text align
+.centred-text{
+    text-align : center;
+}
+.left-text{
+    text-align : left;
+}
+.right-text{
+    text-align :right ; 
+}
+
+// centring with margin
+.centred-margin{
+    margin-left: auto;
+    margin-right: auto;
+}
+// end rules
+
+// container
+.container{
+    max-width: 1200px;
+    margin-left: auto ;
+    margin-right : auto;
+    @include mobile{
+        width: 85%;
+    }
+}
+
+
+// btn get started 
+.btn{
+    display: inline-block;
+    color : white ;
+    font-size: 1.25rem;
+    background-color: $pink ;
+    padding: 2rem 6.25rem;
+    border-radius: 10rem;
+    box-shadow: rgba(0, 0, 0, .3) 0 3px 15px 0;
+    transition: .4s;
+    margin-bottom: 7.5rem;
+    &:hover {
+        background-color: $light-pink;
+    }
+    @include mobile{
+           padding: 1rem 2.5rem;
+           font-size: .9rem;         
+    }
+}
+
+// header
+header{
+    padding-top : 5rem;
+    @include mobile{
+        padding-top: 1.5rem;
+    }
+    > *:first-child{
+        max-width: 81.25rem;
+        padding: 0 1rem;
+    }
+    .logo{
+        width: 15rem;
+        @include mobile{
+            width: 6rem;
+        }
+    }
+    .btn-try{
+        color : $pink ; 
+        border : 1px solid $pink;
+        border-radius : 3rem ; 
+        padding : .8rem 2rem ;
+        transition: .4s;
+        &:hover{
+            color : $light-pink ; 
+            border-color : $light-pink ; 
+        }
+        @include mobile{
+            font-size: .8rem;
+            padding: .3rem 1.5rem;
+        }
+    }
+
+    // intro
+    .intro{
+        padding-top: 14rem;
+        @include mobile{
+            padding-top : 8rem;
+        }
+        .intro-content{
+            .heading{
+                font-size: 2rem;
+                margin-bottom: 1rem;
+                @include mobile{
+                    
+                }
+                
+            }
+            .description{
+                max-width: 36.875rem;
+                line-height : 1.75;
+                font-size: 1.25rem;
+                margin-bottom: 1.5rem;
+                @include mobile{
+                    font-size: 1rem;
+                    padding: 0 2rem;
+                    margin-bottom: 4rem;
+                }
+            }
+            
+            
+        }
+        .intro-img{
+            width: 78.5%;
+        }
+    }
+}
+
+// main 
+main{
+    .stats{
+        width: 68%;
+        padding: 8rem 0;
+        @include mobile{
+            flex-direction: column;
+            justify-content: center;
+            width: 50%;
+            gap: 5rem;
+        }
+        .col{
+            .icon{
+                width: 2.8rem;
+            }
+            .content {
+                .stat-number{
+                    font-size: 4rem;
+                }
+                .stat-type{
+                    color : $cyan;
+                }
+                @include mobile{
+                    text-align: center;
+                }
+            }
+        }
+        
+    }
+
+    .row{
+        padding: 3rem 0;
+        @include mobile{
+            flex-direction: column-reverse;
+            gap: 5rem;
+            > *{
+                width: 100% !important;
+            }           
+        }
+        .content  {
+            width: $row-content-width;
+            @include mobile{
+                    text-align: center;
+            }
+            .heading {
+                margin-bottom: 1rem;
+                @include mobile{
+                    font-size: 1.5rem;
+                }
+            }
+            .description{
+                font-size: 1rem;
+                line-height: 1.75;
+                @include mobile{
+                    font-size: .9rem;
+                    padding: 0 2rem;
+                }
+            }
+        }
+        .illustration{
+            width: $row-illustration-width;
+        }
+    }
+    // grow together section
+    .grow-together-wrapper{
+        background-color: $blue ;
+        position: relative;
+        margin-top: $bg-top-1-height;
+        margin-bottom: $bg-top-1-height;
+        &::before{
+            content: '';
+            position: absolute;
+            top: -#{$bg-top-1-height};
+            left: 0;
+            width: 100%;
+            height: $bg-top-1-height;
+            background: url('../images/bg-section-top-desktop-1.svg') no-repeat ;
+            background-size: 100% 100%;
+            @include mobile{
+                background-image: url('../images/bg-section-top-mobile-1.svg');       
+            }
+        }
+        &::after{
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            height: $bg-top-1-height;
+            background: url('../images/bg-section-bottom-desktop-1.svg') no-repeat ;
+            background-size: 100% 100%;
+            @include mobile{
+             background-image: url('../images/bg-section-bottom-mobile-1.svg');       
+            }
+        }
+                
+    }
+    .conversations{
+        flex-direction: row-reverse;
+        @include mobile{
+         flex-direction: column-reverse;
+         padding: 8rem 0;           
+        }
+        .illustration{
+            width: $row-content-width;
+        }
+        .content{
+            width: $row-illustration-width;
+        }
+    }
+
+    .users-wrapper{
+        background-color: $blue ;
+        position: relative;
+        margin-top: $bg-top-1-height;
+        margin-bottom: $bg-top-1-height;
+        &::before{
+            content: '';
+            position: absolute;
+            top: -#{$bg-top-1-height};
+            left: 0;
+            width: 100%;
+            height: $bg-top-1-height;
+            background: url('../images/bg-section-top-desktop-2.svg') no-repeat ;
+            background-size: 100% 100%;
+            @include mobile{
+             background-image: url('../images/bg-section-top-mobile-2.svg');       
+            }
+        }
+        &::after{
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            height: $bg-top-1-height;
+            background: url('../images/bg-section-bottom-desktop-2.svg') no-repeat ;
+            background-size: 100% 100%;
+            @include mobile{
+                  background-image: url('../images/bg-section-bottom-mobile-2.svg');  
+            }
+        }
+    }
+
+    .community{
+        padding: 8rem 0;
+        @include mobile{
+            padding: 8rem 0 12rem 0;
+        }
+        .heading{
+            margin-bottom: 2rem;
+            @include mobile{
+                    font-size: 1.5rem;
+            }
+        }
+    }
+}
+
+// footer
+footer{
+    background-color: $cyan;
+    color : white ;
+    font-size: .9rem;
+    padding-top: 10rem;
+    padding-bottom: 5rem;
+    position: relative;
+    @include mobile{
+        padding-top: 3rem; 
+    }
+   .container{
+    @include mobile{
+        flex-direction: column-reverse; 
+        gap: 6rem;    
+                 
+    }
+   }
+   &::before{
+       content: '';
+       position: absolute;
+       top: -3rem;
+       height: 3rem;
+       width: 100%;
+       background : url('../images/bg-footer-top-desktop.svg') no-repeat center ;
+       background-size: 100% 100%;
+       @include mobile{
+     background-image: url('../images/bg-footer-top-mobile.svg');               
+    }
+   }
+    .info{
+        max-width: 18.75rem;
+        @include mobile{
+            width: 100%;
+        }
+        .logo{
+            width: 15rem;
+        }
+        .text{
+            padding: 2rem 0;
+            @include mobile{
+                line-height: 1.75;       
+            }
+        }
+        .contact {
+
+            margin-bottom: 4rem;
+            i{
+                margin-right: .5rem;
+            }
+            > *:not(:last-child){
+                margin-bottom: .5rem;
+            }
+        }
+
+        .social{
+            a{
+                font-size: 2rem;
+                color : white ;
+                transition : .4s;
+                &:hover{
+                    color : rgba(2, 199, 246, 1);
+                }
+                &:not(:last-child){
+                    margin-right: 1rem;
+                }
+            }
+        }
+    } 
+    .newsletter{
+        width: 32.5%;
+        @include mobile{
+            width: 100%;    
+        }
+        .title{
+            text-transform : uppercase;
+            margin-bottom: 1rem;
+            @include mobile{
+                letter-spacing: 1px;
+                font-size : 1.5rem;       
+            }
+        }
+        .text{
+            max-width: 21.25rem;
+            margin-bottom: 3rem;
+            @include mobile{
+                line-height: 1.75;       
+            }
+        }
+        form{
+            gap: 1rem;
+            @include mobile{
+             flex-direction: column;
+             align-items: end;       
+            }
+            .email-input{
+                flex: 1;
+                position: relative;
+                @include mobile{
+                    width: 100%;
+                }
+            }
+            input[type=email]{
+                display: block;
+                width: 100%;
+                height: 100%;
+                border: none;
+                border-radius: .25rem;
+                padding: 0 .5rem;
+                outline: none;
+                position: relative;
+                + .error-msg{
+                    display: none;
+                    position: absolute;
+                    left: 0;
+                    top: calc(100% + .5rem);
+                    color : rgb(230, 74, 74);
+                    @include mobile{
+                        position: relative;
+                        margin-top: .5rem;
+                    }
+                }
+                &:focus:invalid{
+                    outline: 1px solid rgb(230, 74, 74);
+                    + .error-msg{
+                        display: block;
+                    }
+                }
+                @include mobile{
+                    padding: 1rem .5rem;
+                }
+            }
+            input[type=submit]{
+                padding: .5rem 1rem;
+                background-color: $pink;
+                color: white;
+                border: none;
+                outline: none;
+                border-radius: .25rem;
+                transition: .4s;
+                &:hover{
+                    background-color: $light-pink;
+                }
+                @include mobile{
+                    padding: 1rem 3rem;
+                    font-size: 1rem;
+                    letter-spacing: 1px;
+                }
+            }
+        }
+    }
+    
+}
